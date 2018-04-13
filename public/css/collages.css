@@ -1,0 +1,17 @@
+#data-container{
+    padding: 50px 20px 50px 20px;
+    background-color: #54D0DD;
+    text-align-all: center;
+}
+
+.item{
+    background-color: #FFFFFF;
+    color: #1b1e21;
+    border: 2px solid #ffffff;
+    margin: 20px;
+}
+
+#data-container .btn-lg{
+    width: 100% !important;
+}
+
