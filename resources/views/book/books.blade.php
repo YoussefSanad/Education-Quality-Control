@@ -35,7 +35,14 @@
         </div>
 
     @else
-        <p>No Books to show</p>
+        <div id="contact" class="text-center">
+            <div class="container">
+                @include('parts.messages')
+                <div class="section-title center">
+                    <h2>No Books Found</h2>
+                </div>
+            </div>
+        </div>
     @endif
 
 

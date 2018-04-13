@@ -87,6 +87,8 @@ class CollagesController extends Controller
     {
         $collage = Collage::find($id);
         session(['selectedCollage' => $collage]);
+        if(session()->get('selectedCourse'))
+            session()->remove('selectedCourse');
         return view('collage.show-collage')->with('collage', $collage);
     }
 

@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', function(){
+    return redirect('/collages');
+});
 Route::get('/about', 'PagesController@about');
 
 Route::resource('collages', 'CollagesController');

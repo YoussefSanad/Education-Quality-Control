@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Collage;
 use Illuminate\Support\Facades\Auth;
 use App\Doctor;
 
@@ -19,7 +20,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = session()->get('selectedCollage')->doctors;
+        $collageId = session()->get('selectedCollage')->id;
+        $doctors = Collage::find($collageId)->doctors;
         return view('doctor.doctors')->with('doctors', $doctors);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Collage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class DepartmentController extends Controller
@@ -18,7 +19,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = session()->get('selectedCollage')->departments;
+        $collageId = session()->get('selectedCollage')->id;
+        $departments = Collage::find($collageId)->departments;
         return view('department.departments')->with('departments', $departments);
     }
 

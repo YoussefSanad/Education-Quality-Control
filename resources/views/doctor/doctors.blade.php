@@ -44,7 +44,14 @@
         </div>
 
     @else
-        <h2>No Doctors Found</h2>
+        <div id="contact" class="text-center">
+            <div class="container">
+                @include('parts.messages')
+                <div class="section-title center">
+                    <h2>No Doctors Found</h2>
+                </div>
+            </div>
+        </div>
     @endif
 
 

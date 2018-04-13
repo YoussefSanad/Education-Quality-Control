@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Course;
+use App\Collage;
 use App\Syllabus;
 use Illuminate\Http\Request;
 
@@ -20,11 +22,12 @@ class SyllabusController extends Controller
     public function index()
     {
         if( session()->get('selectedCourse')) {
-            $syllabuses = session()->get('selectedCourse')->syllabuses;
-            session()->remove('selectedCourse');
+            $courseId = session()->get('selectedCourse')->id;
+            $syllabuses = Course::find($courseId)->syllabuses;
         }
         else{
-            $syllabuses = Syllabus::all();
+            $collageId = session()->get('selectedCollage')->id;
+            $syllabuses = Collage::find($collageId)->books;
         }
         return view('syllabus.syllabuses')->with('syllabuses', $syllabuses);
     }

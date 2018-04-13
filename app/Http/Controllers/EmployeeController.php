@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Collage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class EmployeeController extends Controller
@@ -18,7 +19,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = session()->get('selectedCollage')->employees;
+        $collageId = session()->get('selectedCollage')->id;
+        $employees = Collage::find($collageId)->employees;
         return view('employee.employees')->with('employees', $employees);
     }
 

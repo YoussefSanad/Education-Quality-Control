@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AcademicYear;
+use App\Collage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,8 @@ class AcademicYearController extends Controller
      */
     public function index()
     {
-        $academicYears = session()->get('selectedCollage')->academicYears;
+        $collageId = session()->get('selectedCollage')->id;
+        $academicYears = Collage::find($collageId)->academicYears;
         return view('academic-year.academic-years')->with('academicYears', $academicYears);
     }
 
@@ -93,7 +95,7 @@ class AcademicYearController extends Controller
                 'number_of_students' => 'required',
             ]);
         $academicYear = AcademicYear::find($id);
-        $academicYear->collage_id = Auth::user()->collage->id;
+        $academicYear->collage_id = session()->get('selectedCollage')->id;
         $academicYear->name = $request->input('name');
         $academicYear->number_of_students = $request->input('number_of_students');
         $academicYear->save();

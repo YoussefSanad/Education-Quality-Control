@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Collage;
 use App\Course;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
@@ -20,7 +21,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = session()->get('selectedCollage')->courses;
+        $collageId = session()->get('selectedCollage')->id;
+        $courses = Collage::find($collageId)->courses;
         return view('course.courses')->with('courses', $courses);
     }
 

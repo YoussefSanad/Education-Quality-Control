@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Collage;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = session()->get('selectedCollage')->books;
+        $collageId = session()->get('selectedCollage')->id;
+        $books = Collage::find($collageId)->books;
         return view('book.books')->with('books', $books);
     }
 

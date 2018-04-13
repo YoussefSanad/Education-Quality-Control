@@ -26,7 +26,14 @@
                 <div class="intro-text">
                     <h1>Welcome, <span id="intro_user_name">{{Auth::user()->name}}</span></h1>
                     <p>Education • Quality • Assurance</p>
-                    <a href="collages/create" class="btn btn-custom btn-lg page-scroll">Fill Application</a></div>
+                    @if(Auth::user()->is_admin)
+                        <a href="collages" class="btn btn-custom btn-lg page-scroll">View Collages</a></div>
+                    @elseif(count(Auth::user()->collages) == 0)
+                        <a href="collages/create" class="btn btn-custom btn-lg page-scroll">Fill Application</a></div>
+                    @else
+                        <a href="/academic-years/create" class="btn btn-custom btn-lg page-scroll">Add Data</a></div>
+                    @endif
+
             </div>
         </div>
     </div>

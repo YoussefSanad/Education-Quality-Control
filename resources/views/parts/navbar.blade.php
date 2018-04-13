@@ -29,7 +29,6 @@
                               <li><a href="{{ route('login') }}">Login</a></li>
                               <li><a href="{{ route('register') }}">Register</a></li>
                           @else
-                            <li><a href="/" class="page-scroll">Home</a></li>
                             @if(Auth::user()->is_admin)
                                 <li><a href="/collages" class="page-scroll">Collages</a></li>
                               @else
