@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Collage;
+use Illuminate\Support\Facades\Storage;
 
 class CollagesController extends Controller
 {

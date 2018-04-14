@@ -11,6 +11,9 @@
                             <tr class="row100 head">
                                 <th class="column100 column1" data-column="column1">CollageName</th>
                                 <th class="column100 column2" data-column="column2">Comment</th>
+                                @if(!Auth::user()->is_admin)
+                                    <th class="column100 column2" data-column="column2">Data</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -19,6 +22,16 @@
                                 <tr class="row100">
                                     <td class="column100 column1" data-column="column1">{{session()->get('selectedCollage')->name}}</td>
                                     <td class="column100 column2" data-column="column2">{{$comment->comment}}</td>
+
+                                    @if(!Auth::user()->is_admin)
+                                        <td class="column100 column2" data-column="column2">
+                                            {!! Form::open(['action'  => ['CommentController@destroy', $comment->id ], 'method' => 'POST']) !!}
+                                            {{ Form::hidden('_method', 'DELETE')  }}
+                                            {{ Form::submit('Delete', ['style' => 'color: red; background: transparent'])}}
+                                            {!! Form::close() !!}
+                                        </td>
+
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
