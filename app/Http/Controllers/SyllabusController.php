@@ -27,7 +27,7 @@ class SyllabusController extends Controller
         }
         else{
             $collageId = session()->get('selectedCollage')->id;
-            $syllabuses = Collage::find($collageId)->books;
+            $syllabuses = Syllabus::all();
         }
         return view('syllabus.syllabuses')->with('syllabuses', $syllabuses);
     }
@@ -101,10 +101,8 @@ class SyllabusController extends Controller
             [
                 'week_number' => 'required',
                 'goal' => 'required',
-                'syllabuse_id' => 'required'
             ]);
         $syllabus = Syllabus::find($id);
-        $syllabus->syllabuse_id = $request->input('syllabuse_id');
         $syllabus->week_number = $request->input('week_number');
         $syllabus->goal = $request->input('goal');
         $syllabus->save();
@@ -122,6 +120,7 @@ class SyllabusController extends Controller
         $syllabus = Syllabus::find($id);
         $syllabus->delete();
         return redirect('courses')->with('success' , 'Syllabus deleted');
+
 
     }
 }

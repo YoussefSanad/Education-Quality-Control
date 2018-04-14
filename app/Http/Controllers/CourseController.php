@@ -57,7 +57,7 @@ class CourseController extends Controller
                 'success_percentage' => 'required'
             ]);
         $course = new Course;
-        $course->collage_id = Auth::user()->collage->id;
+        $course->collage_id = session()->get('selectedCollage')->id;
         $course->academic_year_id = $request->input('academic_year_id');
         $course->name = $request->input('name');
         $course->code = $request->input('code');

@@ -49,7 +49,7 @@ class AcademicYearController extends Controller
                 'number_of_students' => 'required',
             ]);
         $academicYear = new AcademicYear;
-        $academicYear->collage_id = Auth::user()->collage->id;
+        $academicYear->collage_id = session()->get('selectedCollage')->id;
         $academicYear->name = $request->input('name');
         $academicYear->number_of_students = $request->input('number_of_students');
         $academicYear->save();

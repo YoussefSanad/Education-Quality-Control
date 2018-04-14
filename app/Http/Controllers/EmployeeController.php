@@ -49,7 +49,7 @@ class EmployeeController extends Controller
                 'address' => 'required',
             ]);
         $employee = new Employee;
-        $employee ->collage_id = Auth::user()->collage->id;
+        $employee ->collage_id = session()->get('selectedCollage')->id;
         $employee ->name = $request->input('name');
         $employee ->phone = $request->input('phone');
         $employee ->address = $request->input('address');
@@ -97,7 +97,6 @@ class EmployeeController extends Controller
                 'address' => 'required',
             ]);
         $employee = Employee::find($id);
-        $employee ->collage_id = Auth::user()->collage->id;
         $employee ->name = $request->input('name');
         $employee ->phone = $request->input('phone');
         $employee ->address = $request->input('address');

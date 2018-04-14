@@ -37,7 +37,7 @@
                         <label for="doctor_name">Doctor Name</label>
                         <select class="form-control" name="doctor_name">
                             <h6 class="dropdown-header">Doctor name</h6>
-                            @foreach(Auth::user()->collage->doctors as $doctor)
+                            @foreach(session()->get('selectedCollage')->doctors as $doctor)
                                 <option value="{{$doctor->name}}">Dr. {{$doctor->name}}</option>
                             @endforeach
                         </select>
@@ -45,7 +45,7 @@
                     <div class="form-group col-md-6">
                         <label for="academic_year_id">Academic Year</label>
                         <select class="form-control" name="academic_year_id">
-                            @foreach(Auth::user()->collage->academicYears as $academicYear)
+                            @foreach(session()->get('selectedCollage')->academicYears as $academicYear)
                                 <option value="{{$academicYear->id}}">{{$academicYear->name}}</option>
                             @endforeach
                         </select>

@@ -18,7 +18,10 @@
                                 <th class="column100 column3" data-column="column2">Student Evaluation</th>
                                 <th class="column100 column3" data-column="column2">Success Percentage</th>
                                 <th class="column100 column3" data-column="column2">Syllabuses</th>
-                                <th class="column100 column3" data-column="column2">Data</th>
+                                @if(!Auth::user()->is_admin)
+                                    <th class="column100 column3" data-column="column2">Data</th>
+
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -38,17 +41,27 @@
                                             Show
                                         </a>
                                     </td>
+                                    @if(!Auth::user()->is_admin)
                                     <td class="column100 column8" data-column="column3">
                                         <a href="/courses/{{$course->id}}/edit" style="color: #3ce500">
                                             Edit
                                         </a>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+                @if(!Auth::user()->is_admin)
+                    <a href="/courses/create" class="btn btn-default btn-lg">
+                        Add
+                    </a>
+                @endif
+                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                    Back
+                </a>
             </div>
         </div>
 
@@ -60,6 +73,14 @@
                     <h2>No Courses Found</h2>
                 </div>
             </div>
+            @if(!Auth::user()->is_admin)
+            <a href="/courses/create" class="btn btn-default btn-lg">
+                Add
+            </a>
+            @endif
+            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                Back
+            </a>
         </div>
     @endif
 

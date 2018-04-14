@@ -48,7 +48,7 @@ class DepartmentController extends Controller
                 'phone' => 'required',
             ]);
         $department = new Department;
-        $department->collage_id = Auth::user()->collage->id;
+        $department->collage_id = session()->get('selectedCollage')->id;
         $department->name = $request->input('name');
         $department->phone = $request->input('phone');
         $department->save();
@@ -94,7 +94,6 @@ class DepartmentController extends Controller
                 'phone' => 'required',
             ]);
         $department = Department::find($id);
-        $department->collage_id = Auth::user()->collage->id;
         $department->name = $request->input('name');
         $department->phone = $request->input('phone');
         $department->save();

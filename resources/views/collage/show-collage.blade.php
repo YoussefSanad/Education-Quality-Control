@@ -28,15 +28,23 @@
             <a href="/syllabuses" class="btn btn-default btn-lg" style="width: 100%">
                  Syllabuses
             </a>
-            <a href="/collages/{{$collage->id}}/edit" class="btn btn-default btn-lg" style="background: green; color: white;">
-                Edit Collage Data
+            <a href="/comments" class="btn btn-default btn-lg" style="width: 100%">
+                Comments
             </a>
-            {!! Form::open(['action'  => ['CollagesController@destroy', $collage->id ], 'method' => 'POST' , 'id' => 'contactForm']) !!}
+            @if(!Auth::user()->is_admin)
+                <a href="/collages/{{$collage->id}}/edit" class="btn btn-default btn-lg" style="background: green; color: white;">
+                    Edit Collage Data
+                </a>
 
-            {{ Form::hidden('_method', 'DELETE')  }}
-            {{ Form::submit('Delete', ['class' => 'btn btn-default btn-lg', 'style' => 'background: red; color: white;'])}}
-            {!! Form::close() !!}
-
+                {!! Form::open(['action'  => ['CollagesController@destroy', $collage->id ], 'method' => 'POST' , 'id' => 'contactForm']) !!}
+                    {{ Form::hidden('_method', 'DELETE')  }}
+                    {{ Form::submit('Delete', ['class' => 'btn btn-default btn-lg', 'style' => 'background: red; color: white;'])}}
+                {!! Form::close() !!}
+            @else
+                <a href="/comments/create" class="btn btn-default btn-lg" style="background: blueviolet; color: white;">
+                    Comment
+                </a>
+            @endif
         </div>
     </div>
 @endsection

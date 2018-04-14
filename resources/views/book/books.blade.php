@@ -11,7 +11,9 @@
                             <tr class="row100 head">
                                 <th class="column100 column1" data-column="column1">Book Name</th>
                                 <th class="column100 column2" data-column="column2">Author</th>
-                                <th class="column100 column3" data-column="column3">Data</th>
+                                @if(!Auth::user()->is_admin)
+                                    <th class="column100 column3" data-column="column3">Data</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -20,17 +22,27 @@
                                     <tr class="row100">
                                         <td class="column100 column1" data-column="column1">{{$book->name}}</td>
                                         <td class="column100 column2" data-column="column2">{{$book->author}}</td>
-                                        <td class="column100 column8" data-column="column3">
-                                            <a href="/books/{{$book->id}}/edit" style="color: #1e7e34">
-                                                Edit
-                                            </a>
-                                        </td>
+                                        @if(!Auth::user()->is_admin)
+                                            <td class="column100 column8" data-column="column3">
+                                                <a href="/books/{{$book->id}}/edit" style="color: #1e7e34">
+                                                    Edit
+                                                </a>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+                @if(!Auth::user()->is_admin)
+                    <a href="/books/create" class="btn btn-default btn-lg">
+                        Add
+                    </a>
+                @endif
+                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                    Back
+                </a>
             </div>
         </div>
 
@@ -42,6 +54,14 @@
                     <h2>No Books Found</h2>
                 </div>
             </div>
+            @if(!Auth::user()->is_admin)
+                <a href="/books/create" class="btn btn-default btn-lg">
+                    Add
+                </a>
+            @endif
+            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                Back
+            </a>
         </div>
     @endif
 

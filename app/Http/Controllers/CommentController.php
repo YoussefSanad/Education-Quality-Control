@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Collage;
 use Illuminate\Http\Request;
 use App\Comment;
 
@@ -18,7 +19,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $collageId = session()->get('selectedCollage')->id;
+        $comments = Collage::find($collageId)->comments;
+        return view('comment.comments')->with('comments', $comments);
     }
 
     /**
@@ -44,10 +47,10 @@ class CommentController extends Controller
                 'comment' => 'required',
             ]);
         $comment = new Comment;
-        $comment->collage_id = Auth::user()->collage->id;
+        $comment->collage_id = session()->get('selectedCollage')->id;
         $comment->comment = $request->input('comment');
         $comment->save();
-        return redirect('comments/create')->with('success' , 'Comment added');
+        return redirect('/collages')->with('success' , 'Comment added');
     }
 
     /**
@@ -88,7 +91,7 @@ class CommentController extends Controller
                 'comment' => 'required',
             ]);
         $comment = Comment::find($id);
-        $comment->collage_id = Auth::user()->collage->id;
+        $comment->collage_id = session()->get('selectedCollage')->id;
         $comment->comment = $request->input('comment');
         $comment->save();
         return redirect('comments/')->with('success' , 'Comment Updated');

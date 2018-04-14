@@ -15,8 +15,9 @@
                                 <th class="column100 column3" data-column="column2">Graduation Year</th>
                                 <th class="column100 column3" data-column="column2">Masters Percentage</th>
                                 <th class="column100 column3" data-column="column2">Masters Place of Issue</th>
-                                <th class="column100 column3" data-column="column2">Data</th>
-
+                                @if(!Auth::user()->is_admin)
+                                    <th class="column100 column3" data-column="column2">Data</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -29,17 +30,27 @@
                                     <td class="column100 column2" data-column="column2">{{$doctor->graduation_year}}</td>
                                     <td class="column100 column2" data-column="column2">{{$doctor->masters_percentage}}</td>
                                     <td class="column100 column2" data-column="column2">{{$doctor->masters_place_of_issue}}</td>
-                                    <td class="column100 column8" data-column="column3">
-                                        <a href="/doctors/{{$doctor->id}}/edit" style="color: #1e7e34">
-                                            Edit
-                                        </a>
-                                    </td>
+                                    @if(!Auth::user()->is_admin)
+                                        <td class="column100 column8" data-column="column3">
+                                            <a href="/doctors/{{$doctor->id}}/edit" style="color: #1e7e34">
+                                                Edit
+                                            </a>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+                @if(!Auth::user()->is_admin)
+                <a href="/doctors/create" class="btn btn-default btn-lg">
+                    Add
+                </a>
+                @endif
+                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                    Back
+                </a>
             </div>
         </div>
 
@@ -51,6 +62,14 @@
                     <h2>No Doctors Found</h2>
                 </div>
             </div>
+            @if(!Auth::user()->is_admin)
+            <a href="/doctors/create" class="btn btn-default btn-lg">
+                Add
+            </a>
+            @endif
+            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                Back
+            </a>
         </div>
     @endif
 

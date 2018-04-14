@@ -48,7 +48,7 @@ class BookController extends Controller
                 'author' => 'required',
             ]);
         $book = new Book();
-        $book->collage_id = Auth::user()->collage->id;
+        $book->collage_id = session()->get('selectedCollage')->id;
         $book->name = $request->input('name');
         $book->author = $request->input('author');
         $book->save();

@@ -74,7 +74,8 @@ class CollagesController extends Controller
         $collage->number_of_classrooms = $request->input('number_of_classrooms');
         
         $collage->save();
-        return redirect('/academic-years/create')->with('success' , 'collage created');
+        session(['selectedCollage' => $collage]);
+        return redirect('/collages')->with('success' , 'collage created');
     }
 
     /**

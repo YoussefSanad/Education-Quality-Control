@@ -54,7 +54,7 @@ class DoctorController extends Controller
 
             ]);
         $doctor = new Doctor;
-        $doctor ->collage_id = Auth::user()->collage->id;
+        $doctor ->collage_id = session()->get('selectedCollage')->id;
         $doctor ->name = $request->input('name');
         $doctor ->birth_date = $request->input('birth_date');
         $doctor ->graduation_uni = $request->input('graduation_uni');

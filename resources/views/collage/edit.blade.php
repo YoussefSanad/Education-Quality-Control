@@ -63,5 +63,8 @@
 
             </div>
         </div>
+        <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+            Cancel
+        </a>
     </div>
 @endsection
