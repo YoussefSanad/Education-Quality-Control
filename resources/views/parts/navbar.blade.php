@@ -11,7 +11,7 @@
                       </button>
   
                       <!-- Branding Image -->
-                      <a href="#" class="pull-left"><img src="{!! asset('img/logo.png') !!}" style="width: 40px; height: 50px;"></a>
+                      <a href="#" class="pull-left"><img src="{!! asset('img/logo.png') !!}" style="width: 70px; height: 50px;"></a>
                   </div>
   
                   <div class="collapse navbar-collapse" id="app-navbar-collapse">
