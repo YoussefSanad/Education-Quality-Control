@@ -76,7 +76,7 @@ class CollagesController extends Controller
         
         $collage->save();
         session(['selectedCollage' => $collage]);
-        return redirect('/collages')->with('success' , 'collage created');
+        return redirect('/collages/' . $collage->id)->with('success' , 'collage created');
     }
 
     /**

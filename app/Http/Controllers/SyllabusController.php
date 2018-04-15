@@ -54,10 +54,10 @@ class SyllabusController extends Controller
             [
                 'week_number' => 'required',
                 'goal' => 'required',
-                'syllabuse_id' => 'required'
+                'course_id'=> 'required'
             ]);
         $syllabus = new Syllabus();
-        $syllabus->syllabuse_id = $request->input('syllabuse_id');
+        $syllabus->course_id = $request->input('course_id');
         $syllabus->week_number = $request->input('week_number');
         $syllabus->goal = $request->input('goal');
         $syllabus->save();

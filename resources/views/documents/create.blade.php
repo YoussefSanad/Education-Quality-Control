@@ -7,24 +7,25 @@
         <div class="container">
             @include('parts.messages')
             <div class="section-title center">
-                <h2>Add Comment</h2>
+                <h2>Add Document</h2>
                 <hr>
             </div>
             <div class="col-md-8 col-md-offset-2">
-                {!! Form::open(['action'  => 'CommentController@store' , 'method' => 'POST' , 'id' => 'contactForm']) !!}
+                {!! Form::open(['action'  => 'CollageDocumentController@store' , 'method' => 'POST' , 'id' => 'contactForm','files'=>'true']) !!}
                 <div class="form-group">
-                    {{ Form::textArea('comment', '', ['class' => 'form-control', 'placeholder' => 'Your Comment...']) }}
+                    {{ Form::file('document', ['class' => 'form-control']) }}
                     <p class="help-block text-danger"></p>
                 </div>
                 <div id="success"></div>
-                {{ Form::submit('Comment', ['class' => 'btn btn-default btn-lg'])}}
-                {!! Form::close() !!}
+                {{ Form::submit('Add Document', ['class' => 'btn btn-default btn-lg'])}}
+                <br>
                 <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                     Back
                 </a>
+                {!! Form::close() !!}
+
             </div>
         </div>
-
     </div>
 
 @endsection

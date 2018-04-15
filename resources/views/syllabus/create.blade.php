@@ -40,8 +40,8 @@
                 <div id="success"></div>
                 {{ Form::submit('Add Syllabus', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/books/create" class="btn btn-default btn-lg">
-                    Next
+                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                    Back
                 </a>
                 {!! Form::close() !!}
 

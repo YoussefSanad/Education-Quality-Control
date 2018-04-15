@@ -9,17 +9,17 @@
                         <table data-vertable="ver1">
                             <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" data-column="column1">Code</th>
-                                <th class="column100 column2" data-column="column2">Course Name</th>
-                                <th class="column100 column3" data-column="column2">Objectives</th>
-                                <th class="column100 column3" data-column="column2">description</th>
-                                <th class="column100 column3" data-column="column2">Assessment Method</th>
-                                <th class="column100 column3" data-column="column2">Doctor Name</th>
-                                <th class="column100 column3" data-column="column2">Student Evaluation</th>
-                                <th class="column100 column3" data-column="column2">Success Percentage</th>
-                                <th class="column100 column3" data-column="column2">Syllabuses</th>
+                                <th class="column100 column1" >Code</th>
+                                <th class="column100 column2" >Course Name</th>
+                                <th class="column100 column3" >Objectives</th>
+                                <th class="column100 column3" >description</th>
+                                <th class="column100 column3" >Assessment Method</th>
+                                <th class="column100 column3" >Doctor Name</th>
+                                <th class="column100 column3" >Student Evaluation</th>
+                                <th class="column100 column3" >Success Percentage</th>
+                                <th class="column100 column3" >Syllabuses</th>
                                 @if(!Auth::user()->is_admin)
-                                    <th class="column100 column3" data-column="column2">Data</th>
+                                    <th class="column100 column3" >Data</th>
 
                                 @endif
                             </tr>
@@ -28,21 +28,21 @@
                             @foreach($courses as $course)
 
                                 <tr class="row100">
-                                    <td class="column100 column1" data-column="column1">{{$course->code}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->name}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->objectives}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->description}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->assessment_method}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->doctor_name}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->student_evaluation}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$course->success_percentage}}</td>
-                                    <td class="column100 column2" data-column="column2">
+                                    <td class="column100 column1" >{{$course->code}}</td>
+                                    <td class="column100 column2" >{{$course->name}}</td>
+                                    <td class="column100 column2" >{{$course->objectives}}</td>
+                                    <td class="column100 column2" >{{$course->description}}</td>
+                                    <td class="column100 column2" >{{$course->assessment_method}}</td>
+                                    <td class="column100 column2" >{{$course->doctor_name}}</td>
+                                    <td class="column100 column2" >{{$course->student_evaluation}}</td>
+                                    <td class="column100 column2" >{{$course->success_percentage}}</td>
+                                    <td class="column100 column2" >
                                         <a href="/courses/{{$course->id}}" style="color: #3ce500">
                                             Show
                                         </a>
                                     </td>
                                     @if(!Auth::user()->is_admin)
-                                    <td class="column100 column8" data-column="column3">
+                                    <td class="column100 column8" >
                                         <a href="/courses/{{$course->id}}/edit" style="color: #3ce500">
                                             Edit
                                         </a>
@@ -59,7 +59,7 @@
                         Add
                     </a>
                 @endif
-                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -78,7 +78,7 @@
                 Add
             </a>
             @endif
-            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

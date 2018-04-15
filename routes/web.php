@@ -14,7 +14,6 @@
 Route::get('/', function(){
     return redirect('/collages');
 });
-Route::get('/about', 'PagesController@about');
 
 Route::resource('collages', 'CollagesController');
 Route::resource('academic-years', 'AcademicYearController');
@@ -25,7 +24,7 @@ Route::resource('employees', 'EmployeeController');
 Route::resource('books', 'BookController');
 Route::resource('syllabuses', 'SyllabusController');
 Route::resource('comments', 'CommentController');
+Route::resource('documents', 'CollageDocumentController');
 
 
 Auth::routes();
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

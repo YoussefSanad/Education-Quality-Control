@@ -9,9 +9,9 @@
                         <table data-vertable="ver1">
                             <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" data-column="column1">Course ID</th>
-                                <th class="column100 column1" data-column="column1">Week Number</th>
-                                <th class="column100 column2" data-column="column2">Goal</th>
+                                <th class="column100 column1">Course ID</th>
+                                <th class="column100 column1">Week Number</th>
+                                <th class="column100 column2">Goal</th>
                                 @if(!Auth::user()->is_admin)
                                 <th class="column100 column3" data-column="column2">Data</th>
                                     @endif
@@ -22,11 +22,11 @@
                             @foreach($syllabuses as $syllabus)
 
                                 <tr class="row100">
-                                    <td class="column100 column1" data-column="column1">{{$syllabus->course_id}}</td>
-                                    <td class="column100 column1" data-column="column1">{{$syllabus->week_number}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$syllabus->goal}}</td>
+                                    <td class="column100 column1">{{$syllabus->course_id}}</td>
+                                    <td class="column100 column1">{{$syllabus->week_number}}</td>
+                                    <td class="column100 column2">{{$syllabus->goal}}</td>
                                     @if(!Auth::user()->is_admin)
-                                        <td class="column100 column8" data-column="column3">
+                                        <td class="column100 column8" >
                                             <a href="/syllabuses/{{$syllabus->id}}/edit" style="color: #1e7e34">
                                                 Edit
                                             </a>
@@ -43,7 +43,7 @@
                     Add
                 </a>
                 @endif
-                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -62,7 +62,7 @@
                 Add
             </a>
             @endif
-            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

@@ -29,8 +29,8 @@
                 <div id="success"></div>
                 {{ Form::submit('Add Department', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/employees/create" class="btn btn-default btn-lg">
-                    Next
+                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                    Back
                 </a>
                 {!! Form::close() !!}
 

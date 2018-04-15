@@ -33,13 +33,14 @@
                 <div id="success"></div>
                 {{ Form::submit('Add Employee', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/doctors/create" class="btn btn-default btn-lg">
-                    Next
+                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                    Back
                 </a>
                 {!! Form::close() !!}
 
             </div>
         </div>
+
     </div>
 
 @endsection

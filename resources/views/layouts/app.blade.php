@@ -30,8 +30,8 @@
                         <a href="collages" class="btn btn-custom btn-lg page-scroll">View Collages</a></div>
                     @elseif(count(Auth::user()->collages) == 0)
                         <a href="collages/create" class="btn btn-custom btn-lg page-scroll">Fill Application</a></div>
-                    @else
-                        <a href="/academic-years/create" class="btn btn-custom btn-lg page-scroll">Add Data</a></div>
+                    @elseif(session()->get('selectedCollage'))
+                        <a href="/collages" class="btn btn-custom btn-lg page-scroll">Add Data</a></div>
                     @endif
 
             </div>

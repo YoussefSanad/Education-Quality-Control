@@ -9,10 +9,10 @@
                         <table data-vertable="ver1">
                             <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" data-column="column1">Department Name</th>
-                                <th class="column100 column2" data-column="column2">Phone</th>
+                                <th class="column100 column1" >Department Name</th>
+                                <th class="column100 column2" >Phone</th>
                                 @if(!Auth::user()->is_admin)
-                                <th class="column100 column2" data-column="column2">Data</th>
+                                <th class="column100 column2" >Data</th>
                                 @endif
                             </tr>
                             </thead>
@@ -20,11 +20,11 @@
                             @foreach($departments as $department)
 
                                 <tr class="row100">
-                                    <td class="column100 column1" data-column="column1">{{$department->name}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$department->phone}}</td>
+                                    <td class="column100 column1" >{{$department->name}}</td>
+                                    <td class="column100 column2" >{{$department->phone}}</td>
 
                                     @if(!Auth::user()->is_admin)
-                                        <td class="column100 column8" data-column="column3">
+                                        <td class="column100 column8" >
                                             <a href="/departments/{{$department->id}}/edit" style="color: #1e7e34">
                                                 Edit
                                             </a>
@@ -41,7 +41,7 @@
                     Add
                 </a>
                 @endif
-                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -60,7 +60,7 @@
                 Add
             </a>
             @endif
-            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

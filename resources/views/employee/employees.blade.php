@@ -9,11 +9,11 @@
                         <table data-vertable="ver1">
                             <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" data-column="column1">Employee Name</th>
-                                <th class="column100 column2" data-column="column2">Address</th>
-                                <th class="column100 column3" data-column="column2">phone</th>
+                                <th class="column100 column1" >Employee Name</th>
+                                <th class="column100 column2" >Address</th>
+                                <th class="column100 column3" >phone</th>
                                 @if(!Auth::user()->is_admin)
-                                <th class="column100 column3" data-column="column2">Data</th>
+                                <th class="column100 column3" >Data</th>
                                 @endif
                             </tr>
                             </thead>
@@ -21,11 +21,11 @@
                             @foreach($employees as $employee)
 
                                 <tr class="row100">
-                                    <td class="column100 column1" data-column="column1">{{$employee->name}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$employee->address}}</td>
-                                    <td class="column100 column2" data-column="column2">{{$employee->phone}}</td>
+                                    <td class="column100 column1" >{{$employee->name}}</td>
+                                    <td class="column100 column2" >{{$employee->address}}</td>
+                                    <td class="column100 column2" >{{$employee->phone}}</td>
                                     @if(!Auth::user()->is_admin)
-                                        <td class="column100 column8" data-column="column3">
+                                        <td class="column100 column8" >
                                             <a href="/employees/{{$employee->id}}/edit" style="color: #1e7e34">
                                                 Edit
                                             </a>
@@ -42,7 +42,7 @@
                     Add
                 </a>
                 @endif
-                <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -61,7 +61,7 @@
                 Add
             </a>
             @endif
-            <a href="{{ URL::previous() }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

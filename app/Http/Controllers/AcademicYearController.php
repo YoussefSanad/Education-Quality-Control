@@ -112,6 +112,6 @@ class AcademicYearController extends Controller
     {
         $academicYear = AcademicYear::find($id);
         $academicYear->delete();
-        return redirect('academic-years')-with('success' , 'Academic Year deleted');
+        return redirect('academic-years')->with('success', 'Academic Year deleted');
     }
 }

@@ -11,9 +11,7 @@
                       </button>
   
                       <!-- Branding Image -->
-                      <a class="navbar-brand" href="{{ url('/') }}">
-                          {{ config('app.name', 'Laravel') }}
-                      </a>
+                      <a href="#" class="pull-left"><img src="{!! asset('img/logo.png') !!}" style="width: 40px; height: 50px;"></a>
                   </div>
   
                   <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -32,7 +30,9 @@
                             @if(Auth::user()->is_admin)
                                 <li><a href="/collages" class="page-scroll">Collages</a></li>
                               @else
-                                  <li><a href="/collages" class="page-scroll">My Collages</a></li>
+                                  <li><a href="/collages" class="page-scroll">Collage</a></li>
+                                  <li><a href="/documents" class="page-scroll">Documents</a></li>
+                                  <li><a href="/comments" class="page-scroll">Comments</a></li>
                               @endif
                               <li>
                                   <a href="{{ route('logout') }}"

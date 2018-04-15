@@ -1,7 +1,7 @@
 @extends('layouts.show-layout')
 
 @section('content')
-    @if(count($comments) > 0)
+    @if(count($documents) > 0)
         <div class="limiter">
             <div class="container-table100" style="background-color: #54D0DD">
                 <div class="wrap-table100">
@@ -9,37 +9,42 @@
                         <table data-vertable="ver1">
                             <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" >CollageName</th>
-                                <th class="column100 column2" >Comment</th>
+                                <th class="column100 column1" >Collage ID</th>
+                                <th class="column100 column2" >Document Name</th>
                                 @if(!Auth::user()->is_admin)
-                                    <th class="column100 column2" >Data</th>
+                                    <th class="column100 column8" >
+                                        Data
+                                    </th>
                                 @endif
+                                <th class="column100 column2" >Download</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($comments as $comment)
+                            @foreach($documents as $document)
 
                                 <tr class="row100">
-                                    <td class="column100 column1" >{{session()->get('selectedCollage')->name}}</td>
-                                    <td class="column100 column2" >{{$comment->comment}}</td>
-
+                                    <td class="column100 column1" >{{$document->collage_id}}</td>
+                                    <td class="column100 column2" >{{$document->original_name}}</td>
                                     @if(!Auth::user()->is_admin)
-                                        <td class="column100 column2" >
-                                            {!! Form::open(['action'  => ['CommentController@destroy', $comment->id ], 'method' => 'POST']) !!}
-                                            {{ Form::hidden('_method', 'DELETE')  }}
-                                            {{ Form::submit('Delete', ['style' => 'color: red; background: transparent'])}}
-                                            {!! Form::close() !!}
+                                        <td class="column100 column8" >
+                                            <a href="/documents/{{$document->id}}/edit" style="color: #1e7e34">
+                                                Edit
+                                            </a>
                                         </td>
-
                                     @endif
+                                    <td class="column100 column8" >
+                                        <a href="/documents/{{$document->id}}" style="color: #00be04">
+                                            Download
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-                @if(Auth::user()->is_admin)
-                    <a href="/comments/create" class="btn btn-default btn-lg">
+                @if(!Auth::user()->is_admin)
+                    <a href="/documents/create" class="btn btn-default btn-lg">
                         Add
                     </a>
                 @endif
@@ -54,11 +59,11 @@
             <div class="container">
                 @include('parts.messages')
                 <div class="section-title center">
-                    <h2>No Books Found</h2>
+                    <h2>No Documents Found</h2>
                 </div>
             </div>
-            @if(Auth::user()->is_admin)
-                <a href="/comments/create" class="btn btn-default btn-lg">
+            @if(!Auth::user()->is_admin)
+                <a href="/documents/create" class="btn btn-default btn-lg">
                     Add
                 </a>
             @endif

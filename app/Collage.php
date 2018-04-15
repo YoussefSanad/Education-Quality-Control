@@ -43,4 +43,8 @@ class Collage extends Model
     {
         return $this->hasMany('App\Comment');
     }
+    public function collageDocumetns()
+    {
+        return $this->hasMany('App\CollageDocument');
+    }
 }

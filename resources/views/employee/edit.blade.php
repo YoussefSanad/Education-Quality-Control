@@ -11,7 +11,7 @@
                 <hr>
             </div>
             <div class="col-md-8 col-md-offset-2">
-                {!! Form::open(['action'  => ['EmployeeController@store', $employee->id] , 'method' => 'POST' , 'id' => 'contactForm']) !!}
+                {!! Form::open(['action'  => ['EmployeeController@update', $employee->id] , 'method' => 'POST' , 'id' => 'contactForm']) !!}
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
