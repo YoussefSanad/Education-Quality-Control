@@ -21,26 +21,28 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ Form::text('goal', '', ['class' => 'form-control', 'placeholder' => 'Goal']) }}
+                            {{ Form::text('sub_topic', '', ['class' => 'form-control', 'placeholder' => 'Sub-topic']) }}
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="form-group">
-                    <label for="course_id">Course</label>
-                    <select class="form-control" name="course_id">
-                        <h6 class="dropdown-header">Course</h6>
-                        @foreach(Auth::user()->collages as $collage)
-                            @foreach($collage->courses as $course)
-                                <option value="{{$course->id}}">{{$course->name}}</option>
-                            @endforeach
-                        @endforeach
-                    </select>
+                    {{ Form::number('theoretical_hours', '', ['class' => 'form-control', 'placeholder' => 'Theoretical hours']) }}
+                    <p class="help-block text-danger"></p>
                 </div>
+
+                <div class="form-group">
+                    {{ Form::number('practical_hours', '', ['class' => 'form-control', 'placeholder' => 'Practical hours']) }}
+                    <p class="help-block text-danger"></p>
+                </div>
+
+
                 <div id="success"></div>
                 {{ Form::submit('Add Syllabus', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="/syllabuses#main" class="btn btn-default btn-lg">
                     Back
                 </a>
                 {!! Form::close() !!}

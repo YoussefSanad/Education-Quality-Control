@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Course;
-use App\Collage;
 use App\Syllabus;
 use Illuminate\Http\Request;
 
@@ -26,7 +25,6 @@ class SyllabusController extends Controller
             $syllabuses = Course::find($courseId)->syllabuses;
         }
         else{
-            $collageId = session()->get('selectedCollage')->id;
             $syllabuses = Syllabus::all();
         }
         return view('syllabus.syllabuses')->with('syllabuses', $syllabuses);
@@ -53,15 +51,19 @@ class SyllabusController extends Controller
         $this->validate($request,
             [
                 'week_number' => 'required',
-                'goal' => 'required',
-                'course_id'=> 'required'
+                'sub_topic'=> 'required',
+                'theoretical_hours'=> 'required',
+                'practical_hours'=> 'required'
             ]);
         $syllabus = new Syllabus();
-        $syllabus->course_id = $request->input('course_id');
+        $syllabus->course_id = session()->get('selectedCourse')->id;
         $syllabus->week_number = $request->input('week_number');
-        $syllabus->goal = $request->input('goal');
+        $syllabus->sub_topic = $request->input('sub_topic');
+        $syllabus->theoretical_hours = $request->input('theoretical_hours');
+        $syllabus->practical_hours = $request->input('practical_hours');
+        $syllabus->total_hours = intval($syllabus->theoretical_hours) + intval($syllabus->practical_hours);
         $syllabus->save();
-        return redirect('syllabuses/create')->with('success' , 'Syllabus added');
+        return redirect('syllabuses/create#main')->with('success' , 'Syllabus added');
     }
 
     /**
@@ -100,13 +102,17 @@ class SyllabusController extends Controller
         $this->validate($request,
             [
                 'week_number' => 'required',
-                'goal' => 'required',
+                'sub_topic'=> 'required',
+                'theoretical_hours'=> 'required',
+                'practical_hours'=> 'required'
             ]);
         $syllabus = Syllabus::find($id);
         $syllabus->week_number = $request->input('week_number');
-        $syllabus->goal = $request->input('goal');
-        $syllabus->save();
-        return redirect('syllabuses')->with('success' , 'Syllabus updated');
+        $syllabus->sub_topic = $request->input('sub_topic');
+        $syllabus->theoretical_hours = $request->input('theoretical_hours');
+        $syllabus->practical_hours = $request->input('practical_hours');
+        $syllabus->total_hours = intval($syllabus->theoretical_hours) + intval($syllabus->practical_hours);
+        return redirect('syllabuses#main')->with('success' , 'Syllabus updated');
     }
 
     /**
@@ -119,7 +125,7 @@ class SyllabusController extends Controller
     {
         $syllabus = Syllabus::find($id);
         $syllabus->delete();
-        return redirect('courses')->with('success' , 'Syllabus deleted');
+        return redirect('courses#main')->with('success' , 'Syllabus deleted');
 
 
     }

@@ -20,7 +20,10 @@ class CreateSyllabiTable extends Migration
                 ->references('id')->on('courses')
                 ->onDelete('cascade');
             $table->string('week_number');
-            $table->string('goal');
+            $table->string('sub_topic');
+            $table->integer('total_hours');
+            $table->integer('theoretical_hours');
+            $table->integer('practical_hours');
             $table->timestamps();
         });
     }

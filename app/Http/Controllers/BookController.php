@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Collage;
+use App\Course;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +19,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $collageId = session()->get('selectedCollage')->id;
-        $books = Collage::find($collageId)->books;
+        $courseId = session()->get('selectedCourse')->id;
+        $books = Course::find($courseId)->books;
         return view('book.books')->with('books', $books);
     }
 
@@ -48,11 +48,11 @@ class BookController extends Controller
                 'author' => 'required',
             ]);
         $book = new Book();
-        $book->collage_id = session()->get('selectedCollage')->id;
+        $book->course_id = session()->get('selectedCourse')->id;
         $book->name = $request->input('name');
         $book->author = $request->input('author');
         $book->save();
-        return redirect('books/create')->with('success' , 'Book added');
+        return redirect('books/create#main')->with('success' , 'Book added');
     }
 
     /**
@@ -97,7 +97,7 @@ class BookController extends Controller
         $book->name = $request->input('name');
         $book->author = $request->input('author');
         $book->save();
-        return redirect('books/')->with('success' , 'Book Updated');
+        return redirect('books#main')->with('success' , 'Book Updated');
     }
 
     /**
@@ -110,6 +110,6 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $book->delete();
-        return redirect('books/')->with('success' , 'Book Deleted');
+        return redirect('books#main')->with('success' , 'Book Deleted');
     }
 }

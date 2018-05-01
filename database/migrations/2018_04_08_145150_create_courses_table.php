@@ -27,7 +27,6 @@ class CreateCoursesTable extends Migration
             $table->string('code');
             $table->string('objectives');
             $table->string('description');
-            $table->string('assessment_method');
             $table->string('doctor_name');
             $table->string('student_evaluation');
             $table->string('success_percentage');

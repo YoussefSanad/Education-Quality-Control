@@ -27,11 +27,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    {{ Form::text('assessment_method', $course->assessment_method, ['class' => 'form-control', 'placeholder' => 'Course assessment method']) }}
-                    <p class="help-block text-danger"></p>
-                </div>
-
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="doctor_name">Doctor Name</label>
@@ -86,6 +81,11 @@
                 {{ Form::hidden('_method', 'DELETE')  }}
                 {{ Form::submit('Delete', ['class' => 'btn btn-default btn-lg', 'style' => 'background: darkred; color: white;'])}}
                 {!! Form::close() !!}
+
+                <br>
+                <a href="/collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
+                    Back
+                </a>
             </div>
         </div>
     </div>

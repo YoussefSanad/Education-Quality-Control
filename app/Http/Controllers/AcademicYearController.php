@@ -53,7 +53,7 @@ class AcademicYearController extends Controller
         $academicYear->name = $request->input('name');
         $academicYear->number_of_students = $request->input('number_of_students');
         $academicYear->save();
-        return redirect('academic-years/create')->with('success' , 'Academic year created');
+        return redirect('academic-years/create#main')->with('success' , 'Academic year created');
     }
 
     /**
@@ -99,7 +99,7 @@ class AcademicYearController extends Controller
         $academicYear->name = $request->input('name');
         $academicYear->number_of_students = $request->input('number_of_students');
         $academicYear->save();
-        return redirect('academic-years')->with('success' , 'Academic year updated');
+        return redirect('academic-years#main')->with('success' , 'Academic year updated');
     }
 
     /**
@@ -112,6 +112,6 @@ class AcademicYearController extends Controller
     {
         $academicYear = AcademicYear::find($id);
         $academicYear->delete();
-        return redirect('academic-years')->with('success', 'Academic Year deleted');
+        return redirect('academic-years#main')->with('success', 'Academic Year deleted');
     }
 }

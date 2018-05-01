@@ -11,7 +11,7 @@
                             <tr class="row100 head">
                                 <th class="column100 column1" >CollageName</th>
                                 <th class="column100 column2" >Comment</th>
-                                @if(!Auth::user()->is_admin)
+                                @if(Auth::user()->is_admin)
                                     <th class="column100 column2" >Data</th>
                                 @endif
                             </tr>
@@ -23,7 +23,7 @@
                                     <td class="column100 column1" >{{session()->get('selectedCollage')->name}}</td>
                                     <td class="column100 column2" >{{$comment->comment}}</td>
 
-                                    @if(!Auth::user()->is_admin)
+                                    @if(Auth::user()->is_admin)
                                         <td class="column100 column2" >
                                             {!! Form::open(['action'  => ['CommentController@destroy', $comment->id ], 'method' => 'POST']) !!}
                                             {{ Form::hidden('_method', 'DELETE')  }}
@@ -39,11 +39,11 @@
                     </div>
                 </div>
                 @if(Auth::user()->is_admin)
-                    <a href="/comments/create" class="btn btn-default btn-lg">
+                    <a href="/comments/create#main" class="btn btn-default btn-lg">
                         Add
                     </a>
                 @endif
-                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -54,15 +54,15 @@
             <div class="container">
                 @include('parts.messages')
                 <div class="section-title center">
-                    <h2>No Books Found</h2>
+                    <h2>No Comments Found</h2>
                 </div>
             </div>
             @if(Auth::user()->is_admin)
-                <a href="/comments/create" class="btn btn-default btn-lg">
+                <a href="/comments/create#main" class="btn btn-default btn-lg">
                     Add
                 </a>
             @endif
-            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

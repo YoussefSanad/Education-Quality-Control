@@ -27,11 +27,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    {{ Form::text('assessment_method', '', ['class' => 'form-control', 'placeholder' => 'Course assessment method']) }}
-                    <p class="help-block text-danger"></p>
-                </div>
-
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="doctor_name">Doctor Name</label>
@@ -78,7 +73,7 @@
                 <div id="success"></div>
                 {{ Form::submit('Add Course', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="/collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                     Back
                 </a>
                 {!! Form::close() !!}

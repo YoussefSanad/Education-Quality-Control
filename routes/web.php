@@ -25,6 +25,18 @@ Route::resource('books', 'BookController');
 Route::resource('syllabuses', 'SyllabusController');
 Route::resource('comments', 'CommentController');
 Route::resource('documents', 'CollageDocumentController');
+Route::resource('course-specifications', 'CourseSpecificationController');
+Route::resource('knowledge-understandings', 'KnowledgeUnderstandingController');
+Route::resource('intellectual-skills', 'IntellectualSkillController');
+Route::resource('professional-skills', 'ProfessionalSkillController');
+Route::resource('general-skills', 'GeneralSkillController');
+Route::resource('course-matrices', 'CourseMatrixController');
+Route::resource('learning-methods', 'LearningMethodController');
+Route::resource('assessment-methods', 'AssessmentMethodController');
 
+Route::resource('course-to-knowledge', 'CourseToKnowledgeController');
+Route::resource('course-to-intellectuals', 'CourseToIntellectualController');
+Route::resource('course-to-professionals', 'CourseToProfessionalController');
+Route::resource('course-to-generals', 'CourseToGeneralController');
 
 Auth::routes();

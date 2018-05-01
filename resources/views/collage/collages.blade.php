@@ -36,7 +36,7 @@
                                                 <td class="column100 column8" >{{$collage->number_of_labs}}</td>
                                                 <td class="column100 column8" >{{$collage->number_of_classrooms}}</td>
                                                 <td class="column100 column8" >
-                                                    <a href="/collages/{{$collage->id}}" style="color: #1e7e34">
+                                                    <a href="/collages/{{$collage->id}}#contact" style="color: #1e7e34">
                                                         Show
                                                     </a>
                                                 </td>

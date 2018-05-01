@@ -27,11 +27,11 @@
                     <h1>Welcome, <span id="intro_user_name">{{Auth::user()->name}}</span></h1>
                     <p>Education • Quality • Assurance</p>
                     @if(Auth::user()->is_admin)
-                        <a href="collages" class="btn btn-custom btn-lg page-scroll">View Collages</a></div>
+                        <a href="/collages" class="btn btn-custom btn-lg page-scroll">View Collages</a></div>
                     @elseif(count(Auth::user()->collages) == 0)
-                        <a href="collages/create" class="btn btn-custom btn-lg page-scroll">Fill Application</a></div>
+                        <a href="/collages/create" class="btn btn-custom btn-lg page-scroll">Fill Application</a></div>
                     @elseif(session()->get('selectedCollage'))
-                        <a href="/collages" class="btn btn-custom btn-lg page-scroll">Add Data</a></div>
+                        <a href="/collages/{{session()->get('selectedCollage')->id}}#contact" class="btn btn-custom btn-lg page-scroll">view Collage Details</a></div>
                     @endif
 
             </div>
@@ -39,8 +39,9 @@
     </div>
 </header>
 
-@yield('content')
-
+<div id="main">
+    @yield('content')
+</div>
 <div id="footer">
     <div class="container text-center">
         <div class="fnav">

@@ -9,7 +9,7 @@
                         <table data-vertable="ver1">
                             <thead>
                             <tr class="row100 head">
-                                <th class="column100 column1" >Collage ID</th>
+                                <th class="column100 column1" >Course Name</th>
                                 <th class="column100 column2" >Document Name</th>
                                 @if(!Auth::user()->is_admin)
                                     <th class="column100 column8" >
@@ -23,11 +23,11 @@
                             @foreach($documents as $document)
 
                                 <tr class="row100">
-                                    <td class="column100 column1" >{{$document->collage_id}}</td>
+                                    <td class="column100 column1" >{{$document->course->name}}</td>
                                     <td class="column100 column2" >{{$document->original_name}}</td>
                                     @if(!Auth::user()->is_admin)
                                         <td class="column100 column8" >
-                                            <a href="/documents/{{$document->id}}/edit" style="color: #1e7e34">
+                                            <a href="/documents/{{$document->id}}/edit#main" style="color: #1e7e34">
                                                 Edit
                                             </a>
                                         </td>
@@ -44,11 +44,11 @@
                     </div>
                 </div>
                 @if(!Auth::user()->is_admin)
-                    <a href="/documents/create" class="btn btn-default btn-lg">
+                    <a href="/documents/create#main" class="btn btn-default btn-lg">
                         Add
                     </a>
                 @endif
-                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="courses/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -63,11 +63,11 @@
                 </div>
             </div>
             @if(!Auth::user()->is_admin)
-                <a href="/documents/create" class="btn btn-default btn-lg">
+                <a href="/documents/create#main" class="btn btn-default btn-lg">
                     Add
                 </a>
             @endif
-            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+            <a href="courses/{{ session()->get('selectedCourse')->id  }}#main" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

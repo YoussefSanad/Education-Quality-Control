@@ -56,6 +56,11 @@
                 {{ Form::hidden('_method', 'DELETE')  }}
                 {{ Form::submit('Delete', ['class' => 'btn btn-default btn-lg', 'style' => 'background: darkred; color: white;'])}}
                 {!! Form::close() !!}
+
+                <br>
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
+                    Back
+                </a>
             </div>
         </div>
     </div>

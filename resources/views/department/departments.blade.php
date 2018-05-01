@@ -25,7 +25,7 @@
 
                                     @if(!Auth::user()->is_admin)
                                         <td class="column100 column8" >
-                                            <a href="/departments/{{$department->id}}/edit" style="color: #1e7e34">
+                                            <a href="/departments/{{$department->id}}/edit#main" style="color: #1e7e34">
                                                 Edit
                                             </a>
                                         </td>
@@ -37,11 +37,11 @@
                     </div>
                 </div>
                 @if(!Auth::user()->is_admin)
-                <a href="/departments/create" class="btn btn-default btn-lg">
+                <a href="/departments/create#main" class="btn btn-default btn-lg">
                     Add
                 </a>
                 @endif
-                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -56,11 +56,11 @@
                 </div>
             </div>
             @if(!Auth::user()->is_admin)
-            <a href="/departments/create" class="btn btn-default btn-lg">
+            <a href="/departments/create#main" class="btn btn-default btn-lg">
                 Add
             </a>
             @endif
-            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

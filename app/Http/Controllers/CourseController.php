@@ -51,7 +51,6 @@ class CourseController extends Controller
                 'academic_year_id' => 'required',
                 'description' => 'required',
                 'objectives' => 'required',
-                'assessment_method' => 'required',
                 'doctor_name' => 'required',
                 'student_evaluation' => 'required',
                 'success_percentage' => 'required'
@@ -63,12 +62,11 @@ class CourseController extends Controller
         $course->code = $request->input('code');
         $course->description = $request->input('description');
         $course->objectives = $request->input('objectives');
-        $course->assessment_method = $request->input('assessment_method');
         $course->doctor_name = $request->input('doctor_name');
         $course->student_evaluation = $request->input('student_evaluation');
         $course->success_percentage = $request->input('success_percentage');
         $course->save();
-        return redirect('courses/create')->with('success' , 'Course Added');
+        return redirect('courses/create#main')->with('success' , 'Course Added');
     }
 
     /**
@@ -81,7 +79,7 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         session(['selectedCourse' => $course]);
-        return redirect('/syllabuses');
+        return view('course.show')->with('course', $course);
     }
 
     /**
@@ -112,7 +110,6 @@ class CourseController extends Controller
                 'academic_year_id' => 'required',
                 'description' => 'required',
                 'objectives' => 'required',
-                'assessment_method' => 'required',
                 'doctor_name' => 'required',
                 'student_evaluation' => 'required',
                 'success_percentage' => 'required'
@@ -123,12 +120,11 @@ class CourseController extends Controller
         $course->code = $request->input('code');
         $course->description = $request->input('description');
         $course->objectives = $request->input('objectives');
-        $course->assessment_method = $request->input('assessment_method');
         $course->doctor_name = $request->input('doctor_name');
         $course->student_evaluation = $request->input('student_evaluation');
         $course->success_percentage = $request->input('success_percentage');
         $course->save();
-        return redirect('courses')->with('success' , 'Course updated');
+        return redirect('courses#main')->with('success' , 'Course updated');
     }
 
     /**
@@ -141,7 +137,7 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $course->delete();
-        return redirect('/courses')->with('success' , 'Course deleted');
+        return redirect('/courses#main')->with('success' , 'Course deleted');
 
     }
 }

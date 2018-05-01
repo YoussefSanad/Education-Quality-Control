@@ -33,14 +33,15 @@
                     @elseif(count(Auth::user()->collages) == 0)
                         <a href="collages/create" class="btn btn-custom btn-lg page-scroll">Fill Application</a></div>
                     @elseif(session()->get('selectedCollage'))
-                        <a href="/collages/{{session()->get('selectedCollage')->id}}" class="btn btn-custom btn-lg page-scroll">Add Data</a></div>
+                        <a href="/collages/{{session()->get('selectedCollage')->id}}#contact" class="btn btn-custom btn-lg page-scroll">view Collage Details</a></div>
                     @endif
             </div>
         </div>
     </div>
 </header>
-
-@yield('content')
+<div id="main">
+    @yield('content')
+</div>
 
 <div id="footer">
     <div class="container text-center">

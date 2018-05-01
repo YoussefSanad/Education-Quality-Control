@@ -19,7 +19,7 @@
                 <div id="success"></div>
                 {{ Form::submit('Comment', ['class' => 'btn btn-default btn-lg'])}}
                 {!! Form::close() !!}
-                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="/collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>

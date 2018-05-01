@@ -62,7 +62,7 @@ class DoctorController extends Controller
         $doctor ->masters_percentage = $request->input('masters_percentage');
         $doctor ->masters_place_of_issue = $request->input('masters_place_of_issue');
         $doctor ->save();
-        return redirect('doctors/create')->with('success' , 'Doctor added');
+        return redirect('doctors/create#main')->with('success' , 'Doctor added');
     }
 
     /**
@@ -116,7 +116,7 @@ class DoctorController extends Controller
         $doctor ->masters_percentage = $request->input('masters_percentage');
         $doctor ->masters_place_of_issue = $request->input('masters_place_of_issue');
         $doctor ->save();
-        return redirect('doctors')->with('success' , 'Doctor Updated');
+        return redirect('doctors#main')->with('success' , 'Doctor Updated');
     }
 
     /**
@@ -129,7 +129,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::find($id);
         $doctor->delete();
-        return redirect('/doctors')->with('success' , 'Doctor deleted');
+        return redirect('/doctors#main')->with('success' , 'Doctor deleted');
 
     }
 }

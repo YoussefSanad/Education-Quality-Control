@@ -21,21 +21,21 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ Form::text('goal', $syllabus->goal, ['class' => 'form-control', 'placeholder' => 'Goal']) }}
+                            {{ Form::text('sub_topic', $syllabus->sub_topic, ['class' => 'form-control', 'placeholder' => 'Sub-topic']) }}
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="form-group">
-                    <label for="course_id">Course</label>
-                    <select class="form-control" name="course_id">
-                        <h6 class="dropdown-header">Course</h6>
-                        @foreach(Auth::user()->collages as $collage)
-                            @foreach($collage->courses as $course)
-                                <option value="{{$course->id}}">{{$course->name}}</option>
-                            @endforeach
-                        @endforeach
-                    </select>
+                    {{ Form::number('theoretical_hours', $syllabus->theoretical_hours, ['class' => 'form-control', 'placeholder' => 'Theoretical hours']) }}
+                    <p class="help-block text-danger"></p>
+                </div>
+
+                <div class="form-group">
+                    {{ Form::number('practical_hours', $syllabus->practical_hours , ['class' => 'form-control', 'placeholder' => 'Practical hours']) }}
+                    <p class="help-block text-danger"></p>
                 </div>
                 {{Form::hidden('_method', 'PUT')}}
                 <div id="success"></div>
@@ -48,6 +48,10 @@
                 {{ Form::hidden('_method', 'DELETE')  }}
                 {{ Form::submit('Delete', ['class' => 'btn btn-default btn-lg', 'style' => 'background: darkred; color: white;'])}}
                 {!! Form::close() !!}
+                <br>
+                <a href="/syllabuses#main" class="btn btn-default btn-lg">
+                    Cancel
+                </a>
 
             </div>
         </div>

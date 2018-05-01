@@ -50,7 +50,7 @@ class CommentController extends Controller
         $comment->collage_id = session()->get('selectedCollage')->id;
         $comment->comment = $request->input('comment');
         $comment->save();
-        return redirect('/collages')->with('success' , 'Comment added');
+        return redirect('/comments#main')->with('success' , 'Comment added');
     }
 
     /**
@@ -94,7 +94,7 @@ class CommentController extends Controller
         $comment->collage_id = session()->get('selectedCollage')->id;
         $comment->comment = $request->input('comment');
         $comment->save();
-        return redirect('comments/')->with('success' , 'Comment Updated');
+        return redirect('comments#main')->with('success' , 'Comment Updated');
     }
 
     /**
@@ -107,6 +107,6 @@ class CommentController extends Controller
     {
         $comment = Comment::find($id);
         $comment->delete();
-        return redirect('comments/')->with('success' , 'Comment deleted');
+        return redirect('comments#main')->with('success' , 'Comment deleted');
     }
 }

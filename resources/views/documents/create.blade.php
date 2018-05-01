@@ -19,7 +19,7 @@
                 <div id="success"></div>
                 {{ Form::submit('Add Document', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="/documents#main" class="btn btn-default btn-lg">
                     Back
                 </a>
                 {!! Form::close() !!}

@@ -28,11 +28,12 @@
                               <li><a href="{{ route('register') }}">Register</a></li>
                           @else
                             @if(Auth::user()->is_admin)
-                                <li><a href="/collages" class="page-scroll">Collages</a></li>
+                                <li><a href="/collages#main" class="page-scroll">Collages</a></li>
                               @else
-                                  <li><a href="/collages" class="page-scroll">Collage</a></li>
-                                  <li><a href="/documents" class="page-scroll">Documents</a></li>
-                                  <li><a href="/comments" class="page-scroll">Comments</a></li>
+                                  <li><a href="/collages#main" class="page-scroll">Collage</a></li>
+                                @if(session('selectedCollage'))
+                                    <li><a href="/comments" class="page-scroll">Comments</a></li>
+                                    @endif
                               @endif
                               <li>
                                   <a href="{{ route('logout') }}"

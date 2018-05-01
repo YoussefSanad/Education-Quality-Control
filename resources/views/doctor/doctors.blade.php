@@ -32,7 +32,7 @@
                                     <td class="column100 column2" >{{$doctor->masters_place_of_issue}}</td>
                                     @if(!Auth::user()->is_admin)
                                         <td class="column100 column8" >
-                                            <a href="/doctors/{{$doctor->id}}/edit" style="color: #1e7e34">
+                                            <a href="/doctors/{{$doctor->id}}/edit#main" style="color: #1e7e34">
                                                 Edit
                                             </a>
                                         </td>
@@ -44,11 +44,11 @@
                     </div>
                 </div>
                 @if(!Auth::user()->is_admin)
-                <a href="/doctors/create" class="btn btn-default btn-lg">
+                <a href="/doctors/create#main" class="btn btn-default btn-lg">
                     Add
                 </a>
                 @endif
-                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                     Back
                 </a>
             </div>
@@ -63,11 +63,11 @@
                 </div>
             </div>
             @if(!Auth::user()->is_admin)
-            <a href="/doctors/create" class="btn btn-default btn-lg">
+            <a href="/doctors/create#main" class="btn btn-default btn-lg">
                 Add
             </a>
             @endif
-            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+            <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                 Back
             </a>
         </div>

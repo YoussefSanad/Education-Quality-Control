@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Collage;
 use App\CollageDocument;
+use App\Course;
+use App\CourseDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,9 +17,9 @@ class CollageDocumentController extends Controller
      */
     public function index()
     {
-        $collageId = session()->get('selectedCollage')->id;
-        $collage = Collage::find($collageId);
-        $documents = $collage->collageDocumetns;
+        $courseId = session()->get('selectedCourse')->id;
+        $course = Course::find($courseId);
+        $documents = $course->courseDocuments;
         return view('documents.documents')->with('documents', $documents);
     }
 
@@ -40,12 +41,16 @@ class CollageDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $collageDocument = new CollageDocument;
-        $collageDocument->collage_id = session()->get('selectedCollage')->id;
-        $collageDocument->path = Storage::putFile('documents', $request->file('document'));
-        $collageDocument->original_name = $request->file('document')->getClientOriginalName();
-        $collageDocument->save();
-        return redirect('/documents/create')->with('success', $collageDocument->original_name . ' Added');
+        $this->validate($request,
+            [
+                'document' => 'required'
+            ]);
+        $courseDocument = new CollageDocument;
+        $courseDocument->course_id = session()->get('selectedCourse')->id;
+        $courseDocument->path = Storage::putFile('documents', $request->file('document'));
+        $courseDocument->original_name = $request->file('document')->getClientOriginalName();
+        $courseDocument->save();
+        return redirect('/documents/create#main')->with('success', $courseDocument->original_name . ' Added');
     }
 
     /**
@@ -57,8 +62,8 @@ class CollageDocumentController extends Controller
     public function show($id)
     {
 
-        $collgeDocument = CollageDocument::find($id);
-        return Storage::download($collgeDocument->path, $collgeDocument->original_name);
+        $courseDocument = CollageDocument::find($id);
+        return Storage::download($courseDocument->path, $courseDocument->original_name);
     }
 
     /**
@@ -69,6 +74,7 @@ class CollageDocumentController extends Controller
      */
     public function edit($id)
     {
+
         $document = CollageDocument::find($id);
         return view('documents.edit')->with('document', $document);
     }
@@ -89,7 +95,7 @@ class CollageDocumentController extends Controller
         $document = CollageDocument::find($id);
         $document->original_name = $request->input('original_name');
         $document->save();
-        return redirect('documents/')->with('success' , 'Document Updated');
+        return redirect('documents#main')->with('success' , 'Document Updated');
     }
 
     /**
@@ -100,9 +106,9 @@ class CollageDocumentController extends Controller
      */
     public function destroy($id)
     {
-        $collgeDocument = CollageDocument::find($id);
-        Storage::delete($collgeDocument->path);
-        $collgeDocument->delete();
-        return redirect('/documents');
+        $courseDocument = CollageDocument::find($id);
+        Storage::delete($courseDocument->path);
+        $courseDocument->delete();
+        return redirect('/documents#main');
     }
 }

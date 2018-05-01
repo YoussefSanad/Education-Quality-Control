@@ -52,7 +52,7 @@ class DepartmentController extends Controller
         $department->name = $request->input('name');
         $department->phone = $request->input('phone');
         $department->save();
-        return redirect('departments/create')->with('success' , 'Department added');
+        return redirect('departments/create#main')->with('success' , 'Department added');
     }
 
     /**
@@ -97,7 +97,7 @@ class DepartmentController extends Controller
         $department->name = $request->input('name');
         $department->phone = $request->input('phone');
         $department->save();
-        return redirect('departments')->with('success' , 'Department updated');
+        return redirect('departments#main')->with('success' , 'Department updated');
     }
 
     /**
@@ -110,7 +110,7 @@ class DepartmentController extends Controller
     {
         $department = Department::find($id);
         $department->delete();
-        return redirect('/departments')->with('success' , 'Department deleted');
+        return redirect('/departments#main')->with('success' , 'Department deleted');
 
     }
 }

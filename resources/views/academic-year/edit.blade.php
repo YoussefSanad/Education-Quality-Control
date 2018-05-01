@@ -30,7 +30,7 @@
                 <div id="success"></div>
                 {{ Form::submit('Update Academic Year', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/academic-years" class="btn btn-default btn-lg">
+                <a href="/academic-years#main" class="btn btn-default btn-lg">
                     Cancel
                 </a>
                 {!! Form::close() !!}

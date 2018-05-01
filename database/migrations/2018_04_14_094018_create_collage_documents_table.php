@@ -15,9 +15,9 @@ class CreateCollageDocumentsTable extends Migration
     {
         Schema::create('collage_documents', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('collage_id');
-            $table->foreign('collage_id')
-                ->references('id')->on('collages')
+            $table->unsignedInteger('course_id');
+            $table->foreign('course_id')
+                ->references('id')->on('courses')
                 ->onDelete('cascade');
             $table->string('path');
             $table->string('original_name');

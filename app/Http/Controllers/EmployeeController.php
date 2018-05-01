@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         $employee ->phone = $request->input('phone');
         $employee ->address = $request->input('address');
         $employee ->save();
-        return redirect('employees/create')->with('success' , 'Employee Added');
+        return redirect('employees/create#main')->with('success' , 'Employee Added');
     }
 
     /**
@@ -101,7 +101,7 @@ class EmployeeController extends Controller
         $employee ->phone = $request->input('phone');
         $employee ->address = $request->input('address');
         $employee ->save();
-        return redirect('employees')->with('success' , 'Employee updated');
+        return redirect('employees#main')->with('success' , 'Employee updated');
     }
 
     /**
@@ -114,6 +114,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
-        return redirect('/employees')->with('success' , 'Employee deleted');
+        return redirect('/employees#main')->with('success' , 'Employee deleted');
     }
 }

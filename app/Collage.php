@@ -43,8 +43,21 @@ class Collage extends Model
     {
         return $this->hasMany('App\Comment');
     }
-    public function collageDocumetns()
+    public function generalSkills()
     {
-        return $this->hasMany('App\CollageDocument');
+        return $this->hasMany('App\GeneralSkill');
     }
+    public function intellectualSkills()
+    {
+        return $this->hasMany('App\IntellectualSkill');
+    }
+    public function professionalSkills()
+    {
+        return $this->hasMany('App\ProfessionalSkill');
+    }
+    public function knowledgeUnderstandings()
+    {
+        return $this->hasMany('App\KnowledgeUnderstanding');
+    }
+
 }

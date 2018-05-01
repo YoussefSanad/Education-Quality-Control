@@ -76,7 +76,7 @@ class CollagesController extends Controller
         
         $collage->save();
         session(['selectedCollage' => $collage]);
-        return redirect('/collages/' . $collage->id)->with('success' , 'collage created');
+        return redirect('/collages#main' . $collage->id)->with('success' , 'collage created');
     }
 
     /**
@@ -140,7 +140,7 @@ class CollagesController extends Controller
         $collage->number_of_classrooms = $request->input('number_of_classrooms');
 
         $collage->save();
-        return redirect('/collages')->with('success' , 'collage updated');
+        return redirect('/collages#main')->with('success' , 'collage updated');
     }
 
     /**
@@ -153,6 +153,6 @@ class CollagesController extends Controller
     {
         $collage = Collage::find($id);
         $collage->delete();
-        return redirect('/collages')->with('success' , 'Collage deleted');
+        return redirect('/collages#main')->with('success' , 'Collage deleted');
     }
 }

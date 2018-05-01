@@ -13,11 +13,10 @@
                                 <th class="column100 column2" >Course Name</th>
                                 <th class="column100 column3" >Objectives</th>
                                 <th class="column100 column3" >description</th>
-                                <th class="column100 column3" >Assessment Method</th>
                                 <th class="column100 column3" >Doctor Name</th>
                                 <th class="column100 column3" >Student Evaluation</th>
                                 <th class="column100 column3" >Success Percentage</th>
-                                <th class="column100 column3" >Syllabuses</th>
+                                <th class="column100 column3" >Details</th>
                                 @if(!Auth::user()->is_admin)
                                     <th class="column100 column3" >Data</th>
 
@@ -32,18 +31,17 @@
                                     <td class="column100 column2" >{{$course->name}}</td>
                                     <td class="column100 column2" >{{$course->objectives}}</td>
                                     <td class="column100 column2" >{{$course->description}}</td>
-                                    <td class="column100 column2" >{{$course->assessment_method}}</td>
                                     <td class="column100 column2" >{{$course->doctor_name}}</td>
                                     <td class="column100 column2" >{{$course->student_evaluation}}</td>
                                     <td class="column100 column2" >{{$course->success_percentage}}</td>
                                     <td class="column100 column2" >
-                                        <a href="/courses/{{$course->id}}" style="color: #3ce500">
+                                        <a href="/courses/{{$course->id}}#main" style="color: #3ce500">
                                             Show
                                         </a>
                                     </td>
                                     @if(!Auth::user()->is_admin)
                                     <td class="column100 column8" >
-                                        <a href="/courses/{{$course->id}}/edit" style="color: #3ce500">
+                                        <a href="/courses/{{$course->id}}/edit#main" style="color: #3ce500">
                                             Edit
                                         </a>
                                     </td>

@@ -20,7 +20,7 @@
                 <div id="success"></div>
                 {{ Form::submit('Update Document', ['class' => 'btn btn-default btn-lg'])}}
                 <br>
-                <a href="/documents" class="btn btn-default btn-lg">
+                <a href="/documents#main" class="btn btn-default btn-lg">
                     Cancel
                 </a>
                 {!! Form::close() !!}
@@ -30,7 +30,10 @@
                 {{ Form::hidden('_method', 'DELETE')  }}
                 {{ Form::submit('Delete', ['class' => 'btn btn-default btn-lg', 'style' => 'background: darkred; color: white;'])}}
                 {!! Form::close() !!}
-
+                <br>
+                <a href="courses/{{ session()->get('selectedCourse')->id  }}#main" class="btn btn-default btn-lg">
+                    Back
+                </a>
             </div>
         </div>
     </div>
