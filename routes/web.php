@@ -15,6 +15,7 @@ Route::get('/', function(){
     return redirect('/collages');
 });
 
+//normal routes
 Route::resource('collages', 'CollagesController');
 Route::resource('academic-years', 'AcademicYearController');
 Route::resource('courses', 'CourseController');
@@ -34,6 +35,7 @@ Route::resource('course-matrices', 'CourseMatrixController');
 Route::resource('learning-methods', 'LearningMethodController');
 Route::resource('assessment-methods', 'AssessmentMethodController');
 
+//pivot tables routes
 Route::resource('course-to-knowledge', 'CourseToKnowledgeController');
 Route::resource('course-to-intellectuals', 'CourseToIntellectualController');
 Route::resource('course-to-professionals', 'CourseToProfessionalController');

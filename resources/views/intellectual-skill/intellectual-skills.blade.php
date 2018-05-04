@@ -60,22 +60,22 @@
                         @endif
 
                         @if(!Auth::user()->is_admin && !session('selectedCourse'))
-                            <a href="/intellectual-skills/create" class="btn btn-default btn-lg">
+                            <a href="/intellectual-skills/create#main" class="btn btn-default btn-lg">
                                 Add
                             </a>
 
-                            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                            <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                                 Back
                             </a>
                         @elseif(!Auth::user()->is_admin && session('selectedCourse'))
-                            <a href="/course-to-intellectuals/create" class="btn btn-default btn-lg">
+                            <a href="/course-to-intellectuals/create#main" class="btn btn-default btn-lg">
                                 Add
                             </a>
                             <a href="courses/{{ session()->get('selectedCourse')->id  }}#main" class="btn btn-default btn-lg">
                                 Back
                             </a>
                         @elseif(Auth::user()->is_admin && !session('selectedCourse'))
-                            <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                            <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                                 Back
                             </a>
                         @else

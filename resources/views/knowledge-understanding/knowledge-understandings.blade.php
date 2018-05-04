@@ -27,7 +27,7 @@
 
                                     @if(!Auth::user()->is_admin && !session('selectedCourse'))
                                         <td class="column100 column8" >
-                                            <a href="/knowledge-understandings/{{$knowledgeUnderstanding->id}}/edit" style="color: #1e7e34">
+                                            <a href="/knowledge-understandings/{{$knowledgeUnderstanding->id}}/edit#main" style="color: #1e7e34">
                                                 Edit
                                             </a>
                                         </td>
@@ -60,22 +60,22 @@
                             @endif
 
                             @if(!Auth::user()->is_admin && !session('selectedCourse'))
-                                <a href="/knowledge-understandings/create" class="btn btn-default btn-lg">
+                                <a href="/knowledge-understandings/create#main" class="btn btn-default btn-lg">
                                     Add
                                 </a>
 
-                                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                                <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                                     Back
                                 </a>
                             @elseif(!Auth::user()->is_admin && session('selectedCourse'))
-                                <a href="/course-to-knowledge/create" class="btn btn-default btn-lg">
+                                <a href="/course-to-knowledge/create#main" class="btn btn-default btn-lg">
                                     Add
                                 </a>
                                 <a href="courses/{{ session()->get('selectedCourse')->id  }}#main" class="btn btn-default btn-lg">
                                     Back
                                 </a>
                             @elseif(Auth::user()->is_admin && !session('selectedCourse'))
-                                <a href="collages/{{ session()->get('selectedCollage')->id  }}" class="btn btn-default btn-lg">
+                                <a href="collages/{{ session()->get('selectedCollage')->id  }}#main" class="btn btn-default btn-lg">
                                     Back
                                 </a>
                             @else
